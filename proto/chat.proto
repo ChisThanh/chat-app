@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package chatpb;
+
+option go_package = "./chatpb";
+
+service ChatService {
+    rpc Connect(stream ConnectRequest) returns (stream ConnectResponse) {}
+    rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
+}
+
+message ConnectRequest {
+    string chat_id = 1;
+    string user_id = 2;  
+    string message = 3;
+}
+
+message ConnectResponse {
+    string chat_id = 1;
+    string user_id = 2;
+    string message = 3; 
+}
+
+message SendMessageRequest {
+    string chat_id = 1;
+    string user_id = 2;
+    string message = 3; 
+}
+
+message SendMessageResponse {
+    string status = 1;  
+    string message = 2; 
+}
